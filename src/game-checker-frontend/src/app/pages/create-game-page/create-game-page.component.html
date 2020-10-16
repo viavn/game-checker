@@ -1,0 +1,80 @@
+<form class="create__form" [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="standard">
+    <mat-label>Digito 1</mat-label>
+    <input matInput formControlName="number1" placeholder="Digite um número de 1 a 31" type="number">
+    <mat-error *ngIf="gameForm.get('number1').hasError('min') || gameForm.get('number1').hasError('max') && !gameForm.get('number1').hasError('required')">
+      Número deve estar entre 1 a 31
+    </mat-error>
+    <mat-error *ngIf="gameForm.get('number1').hasError('required')">
+      Campo obrigatório
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Digito 2</mat-label>
+    <input matInput formControlName="number2" placeholder="Digite um número de 1 a 31" type="number">
+    <mat-error *ngIf="gameForm.get('number2').hasError('min') || gameForm.get('number2').hasError('max') && !gameForm.get('number2').hasError('required')">
+      Número deve estar entre 1 a 31
+    </mat-error>
+    <mat-error *ngIf="gameForm.get('number2').hasError('required')">
+      Campo obrigatório
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Digito 3</mat-label>
+    <input matInput formControlName="number3" placeholder="Digite um número de 1 a 31" type="number">
+    <mat-error *ngIf="gameForm.get('number3').hasError('min') || gameForm.get('number3').hasError('max') && !gameForm.get('number3').hasError('required')">
+      Número deve estar entre 1 a 31
+    </mat-error>
+    <mat-error *ngIf="gameForm.get('number3').hasError('required')">
+      Campo obrigatório
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Digito 4</mat-label>
+    <input matInput formControlName="number4" placeholder="Digite um número de 1 a 31" type="number">
+    <mat-error *ngIf="gameForm.get('number4').hasError('min') || gameForm.get('number4').hasError('max') && !gameForm.get('number4').hasError('required')">
+      Número deve estar entre 1 a 31
+    </mat-error>
+    <mat-error *ngIf="gameForm.get('number4').hasError('required')">
+      Campo obrigatório
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Digito 5</mat-label>
+    <input matInput formControlName="number5" placeholder="Digite um número de 1 a 31" type="number">
+    <mat-error *ngIf="gameForm.get('number5').hasError('min') || gameForm.get('number5').hasError('max') && !gameForm.get('number5').hasError('required')">
+      Número deve estar entre 1 a 31
+    </mat-error>
+    <mat-error *ngIf="gameForm.get('number5').hasError('required')">
+      Campo obrigatório
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Digito 6</mat-label>
+    <input matInput formControlName="number6" placeholder="Digite um número de 1 a 31" type="number">
+    <mat-error *ngIf="gameForm.get('number6').hasError('min') || gameForm.get('number6').hasError('max') && !gameForm.get('number6').hasError('required')">
+      Número deve estar entre 1 a 31
+    </mat-error>
+    <mat-error *ngIf="gameForm.get('number6').hasError('required')">
+      Campo obrigatório
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Digito 7</mat-label>
+    <input matInput formControlName="number7" placeholder="Digite um número de 1 a 31" type="number">
+    <mat-error *ngIf="gameForm.get('number7').hasError('min') || gameForm.get('number7').hasError('max') && !gameForm.get('number7').hasError('required')">
+      Número deve estar entre 1 a 31
+    </mat-error>
+    <mat-error *ngIf="gameForm.get('number7').hasError('required')">
+      Campo obrigatório
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" type="submit" [disabled]="!gameForm.valid">Criar</button>
+</form>
