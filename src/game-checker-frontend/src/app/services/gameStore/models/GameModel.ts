@@ -1,4 +1,5 @@
 export interface GameModel {
+  id: number;
   number1: number;
   number2: number;
   number3: number;

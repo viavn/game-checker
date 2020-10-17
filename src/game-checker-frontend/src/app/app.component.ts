@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'GameChecker';
+  title = 'Game Checker';
   pageLinks = [
-    { description: 'My Games', link: '/list-games' },
-    { description: 'Create Game', link: '/create-game' },
+    { description: 'Meus jogos', link: '/list-games' },
+    { description: 'Criar Jogo', link: '/create-game' },
   ];
 }

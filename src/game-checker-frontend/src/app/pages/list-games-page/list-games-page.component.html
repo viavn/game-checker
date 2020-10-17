@@ -1,3 +1,22 @@
-<ol>
-  <li *ngFor="let game of games">{{ game }}</li>
-</ol>
+<div class="acions">
+  <button mat-raised-button routerLink="/create-game">
+    <mat-icon>add</mat-icon> Novo jogo
+  </button>
+</div>
+
+<table mat-table [dataSource]="games" class="mat-elevation-z8">
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <!-- Game Column -->
+  <ng-container matColumnDef="game">
+    <th mat-header-cell *matHeaderCellDef>Jogo</th>
+    <td mat-cell *matCellDef="let element">{{ element.game }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

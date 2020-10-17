@@ -93,11 +93,12 @@
   </div>
 
   <div class="form__actions">
+    <button mat-flat-button color="warn" type="button" (click)="cancelClick()">Cancelar</button>
+
     <button
-      mat-flat-button
-      type="submit"
-      [disabled]="!gameForm.valid"
-      [ngClass]="{ 'disabled': !gameForm.valid }"
-      >Criar</button>
+        mat-flat-button class="button" type="submit"
+        [disabled]="!gameForm.valid" [ngClass]="{ 'disabled': !gameForm.valid }">
+        Criar
+    </button>
   </div>
 </form>

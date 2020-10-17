@@ -6,9 +6,7 @@ import { GameModel } from './models/GameModel';
 })
 export class GameStoreService {
 
-  private games: GameModel[] = [
-    { number1: 1, number2: 2, number3: 3, number4: 4, number5: 5, number6: 6, number7: 7 },
-  ];
+  private games: GameModel[] = [];
 
   getAllGames(): Promise<GameModel[]> {
     return new Promise((resolve) => {
@@ -17,7 +15,7 @@ export class GameStoreService {
   }
 
   createGame(game: GameModel): void {
-    this.games = [...this.games, game];
+    this.games = [...this.games, { ...game, id: this.games.length + 1 }];
   }
 
   gameExists(game: GameModel): boolean {

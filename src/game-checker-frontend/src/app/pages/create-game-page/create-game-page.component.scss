@@ -60,18 +60,10 @@
   grid-area: button;
   width: 100%;
   padding: 0 8px;
-
-  button {
-    width: 100%;
-    background-color: #0d47a1;
-    color: #ffffff;
-    transition: all 0.5s ease-out;
-
-    &.disabled {
-      background-color: #dee1e4;
-      color: #afb4b9;
-    }
-  }
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(2, auto);
+  gap: 4px;
 }
 
 @media screen and (min-width: 1024px) {
@@ -94,5 +86,7 @@
 
   .form__actions {
     padding: 0;
+    justify-content: flex-end;
+    grid-template-columns: repeat(2, auto);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { GameStoreService } from 'src/app/services/gameStore/game-store.service';
 import { GameModel } from 'src/app/services/gameStore/models/GameModel';
@@ -18,7 +19,8 @@ export class CreateGamePageComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private gameStoreSevice: GameStoreService,
-    private route: Router
+    private route: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -48,13 +50,19 @@ export class CreateGamePageComponent implements OnInit {
 
     const gameModel: GameModel = { ...this.gameForm.value };
     if (this.gameStoreSevice.gameExists(gameModel)) {
-      console.log('jogo já existe');
+      this.snackBar.open('Este jogo já existe.', null, {
+        duration: 5000,
+      });
       return;
     }
 
     this.gameStoreSevice.createGame({ ...this.gameForm.value });
     this.gameForm.reset();
     this.route.navigate(['/list-games']);
+  }
+
+  cancelClick(): void {
+    this.gameForm.reset();
   }
 
   getMinMaxErrorMessageForInput(formControlName: string): () => boolean {
