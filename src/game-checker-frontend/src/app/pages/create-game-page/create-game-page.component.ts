@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { GameStoreService } from 'src/app/services/gameStore/game-store.service';
+import { GameModel } from 'src/app/services/gameStore/models/GameModel';
+import { StringConstants } from '../../infrastructure/StringConstants';
 
 @Component({
   selector: 'app-create-game-page',
@@ -8,8 +12,14 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class CreateGamePageComponent implements OnInit {
   gameForm: FormGroup;
+  minMaxMessage = StringConstants.minMax_message_error;
+  requiredMessage = StringConstants.required_message_error;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private gameStoreSevice: GameStoreService,
+    private route: Router
+  ) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -34,6 +44,27 @@ export class CreateGamePageComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.gameForm.value);
+    if (this.gameForm.invalid) { return; }
+
+    const gameModel: GameModel = { ...this.gameForm.value };
+    if (this.gameStoreSevice.gameExists(gameModel)) {
+      console.log('jogo já existe');
+      return;
+    }
+
+    this.gameStoreSevice.createGame({ ...this.gameForm.value });
+    this.gameForm.reset();
+    this.route.navigate(['/list-games']);
+  }
+
+  getMinMaxErrorMessageForInput(formControlName: string): () => boolean {
+    return () => {
+      return this.gameForm.get(formControlName).hasError('min') || this.gameForm.get(formControlName).hasError('max')
+        && !this.gameForm.get(formControlName).hasError('required');
+    };
+  }
+
+  getRequiredErrorMessageForInput(formControlName: string): () => boolean {
+    return () => this.gameForm.get(formControlName).hasError('required');
   }
 }

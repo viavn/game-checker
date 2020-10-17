@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { CreateGamePageComponent } from './pages/create-game-page/create-game-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListGamesPageComponent } from './pages/list-games-page/list-games-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateGamePageComponent
+    CreateGamePageComponent,
+    ListGamesPageComponent
   ],
   imports: [
     BrowserModule,

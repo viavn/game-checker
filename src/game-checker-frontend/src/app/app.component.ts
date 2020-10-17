@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'GameChecker';
   pageLinks = [
+    { description: 'My Games', link: '/list-games' },
     { description: 'Create Game', link: '/create-game' },
   ];
 }

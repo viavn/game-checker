@@ -1,5 +1,98 @@
 .create__form {
+  font-size: 1.6rem;
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(1, auto);
+  grid-template-rows: repeat(8, auto);
+  grid-template-areas:
+    "group1"
+    "number4"
+    "number5"
+    "number6"
+    "number7"
+    "button";
   gap: 4px;
+  align-items: center;
+  justify-items: center;
+  padding-top: 8px;
+}
+
+.first__group {
+  grid-area: group1;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "number1"
+    "number2"
+    "number3";
+  gap: 4px;
+}
+
+.group1 {
+  grid-area: number1;
+}
+
+.group2 {
+  grid-area: number2;
+}
+
+.group3 {
+  grid-area: number3;
+}
+
+.group4 {
+  grid-area: number4;
+}
+
+.group5 {
+  grid-area: number5;
+}
+
+.group6 {
+  grid-area: number6;
+}
+
+.group7 {
+  grid-area: number7;
+}
+
+.form__actions {
+  grid-area: button;
+  width: 100%;
+  padding: 0 8px;
+
+  button {
+    width: 100%;
+    background-color: #0d47a1;
+    color: #ffffff;
+    transition: all 0.5s ease-out;
+
+    &.disabled {
+      background-color: #dee1e4;
+      color: #afb4b9;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .create__form {
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      "group1 group1 group1 group1"
+      "number4 number5 number6 number7"
+      "button button button button";
+    justify-content: center;
+  }
+
+  .first__group {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-areas: "number1 number2 number3";
+    justify-content: center;
+  }
+
+  .form__actions {
+    padding: 0;
+  }
 }
