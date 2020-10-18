@@ -56,9 +56,11 @@ export class CreateGamePageComponent implements OnInit {
       return;
     }
 
-    this.gameStoreSevice.createGame({ ...this.gameForm.value });
-    this.gameForm.reset();
-    this.route.navigate(['/list-games']);
+    this.gameStoreSevice.createGame({ ...this.gameForm.value })
+      .then(() => {
+        this.gameForm.reset();
+        this.route.navigate(['/list-games']);
+      });
   }
 
   cancelClick(): void {

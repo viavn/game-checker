@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from '../localStorage/local-storage.service';
 import { GameModel } from './models/GameModel';
 
 @Injectable({
@@ -6,16 +7,24 @@ import { GameModel } from './models/GameModel';
 })
 export class GameStoreService {
 
+  constructor(private localStorageService: LocalStorageService) { }
+
   private games: GameModel[] = [];
 
   getAllGames(): Promise<GameModel[]> {
-    return new Promise((resolve) => {
+    return new Promise(async resolve => {
+      const games = await this.localStorageService.getItems('games');
+      this.games = games;
       resolve(this.games);
     });
   }
 
-  createGame(game: GameModel): void {
-    this.games = [...this.games, { ...game, id: this.games.length + 1 }];
+  createGame(game: GameModel): Promise<void> {
+    return new Promise(async resolve => {
+      this.games = [...this.games, { ...game, id: this.games.length + 1 }];
+      await this.localStorageService.save(this.games, 'games');
+      resolve();
+    });
   }
 
   gameExists(game: GameModel): boolean {
